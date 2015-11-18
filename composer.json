@@ -1,0 +1,13 @@
+{
+  "name": "white-frame/view",
+  "description": "View manager and tools for Laravel",
+  "autoload": {
+    "psr-4": {
+      "WhiteFrame\\View\\": "src/"
+    }
+  },
+  "require": {
+    "illuminate/support": "5.1.*",
+    "white-frame/white-frame": "dev-master"
+  }
+}
