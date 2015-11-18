@@ -21,8 +21,13 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('WhiteFrame\View', function ($app) {
+        $this->app->singleton('white-frame.view.view', function ($app) {
             return new \WhiteFrame\View\View();
+        });
+
+        $this->app->booting(function () {
+            $loader = AliasLoader::getInstance();
+            $loader->alias('WhiteFrame\View', 'WhiteFrame\View\ViewFacade');
         });
     }
 
@@ -34,7 +39,7 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('*', function (\Illuminate\View\View $view) {
-            foreach(\App::make('WhiteFrame\View\View')->get($view->getName()) as $viewInfos) {
+            foreach(\WhiteFrame\View::get($view->getName()) as $viewInfos) {
                 $view->nest($viewInfos['section'], $viewInfos['view'], $viewInfos['datas']);
             }
         });
