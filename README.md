@@ -1,6 +1,14 @@
 # View
 
-Set of tools for enhancing view management.
+Set of tools for enhancing Laravel blade view management.
+
+**Install** with composer :
+
+    composer require white-frame/view:0.*
+
+**Register** the service provider :
+
+    WhiteFrame\View\ViewServiceProvider::class
 
 ## Registering blade views into sections
 
