@@ -10,9 +10,9 @@ Set of tools for enhancing Laravel blade view management.
 
     WhiteFrame\View\ViewServiceProvider::class
 
-## Registering blade views into sections
+## Nesting views into another views (hooking blade view sections)
 
-The facade `WhiteFrame\View` allows you to nest blade view into other blade views. It can be usefull if you have a modular application witch need to dynamically add content into sections etc ...
+The facade `WhiteFrame\View` allows you to nest blade view into another blade views. It can be usefull if you have a modular application witch need to dynamically add content into sections etc ...
 
 ### Simple example :
 
