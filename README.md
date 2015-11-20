@@ -38,7 +38,9 @@ Here is your general `layout.blade.php`, with a `sidebar-menu` section. This sec
 In a specific module, create a partial view to be included, for example `my_module::layout.menu` :
 
 ```html
-<li><a href="{{ url('my_module/my_page') }}">My module page<</a></li>
+@section("sidebar-menu")
+	<li><a href="{{ url('my_module/my_page') }}">My module page</a></li>
+@stop
 ````
 
 And then nest this partial view into the layout section using `WhiteFrame\View` into the service provider of your module :
@@ -46,9 +48,9 @@ And then nest this partial view into the layout section using `WhiteFrame\View` 
 ```php
 public function boot()
 {
-  \WhiteFrame\View::add('layout', 'sidebar-menu', 'my_module::layout.menu');
+  \WhiteFrame\View::add('layout', my_module::layout.menu');
   /*
-   * You can use 4 params : nesting view, section name, nested view, array containing datas (optionnal)
+   * You can use 3 params : nesting view, nested view, array containing datas for nested view (optionnal)
    */
 }
 ```
