@@ -52,7 +52,7 @@ public function boot()
 {
   \WhiteFrame\View::nest('layout', 'my_module::layout.menu');
   /*
-   * You can use 3 params : nesting view, nested view, array containing datas for nested view (optionnal)
+   * You can use 3 params : nest view (host), nested view (child), array containing datas for nested view (optionnal)
    */
 }
 ```
