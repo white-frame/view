@@ -12,7 +12,7 @@ Set of tools for enhancing Laravel blade view management.
 
 ## Registering blade views into sections
 
-The facade `WhiteFrame\View` allows you to register blade view into sections of other blade views. It can be usefull if you have a modular application witch need to dynamically add blade view into generic sections of your application.
+The facade `WhiteFrame\View` allows you to nest blade view into other blade views. It can be usefull if you have a modular application witch need to dynamically add content into sections etc ...
 
 ### Simple example :
 
@@ -39,6 +39,8 @@ In a specific module, create a partial view to be included, for example `my_modu
 
 ```html
 @section("sidebar-menu")
+	@parent
+	
 	<li><a href="{{ url('my_module/my_page') }}">My module page</a></li>
 @stop
 ````
@@ -48,7 +50,7 @@ And then nest this partial view into the layout section using `WhiteFrame\View` 
 ```php
 public function boot()
 {
-  \WhiteFrame\View::add('layout', my_module::layout.menu');
+  \WhiteFrame\View::nest('layout', my_module::layout.menu');
   /*
    * You can use 3 params : nesting view, nested view, array containing datas for nested view (optionnal)
    */
