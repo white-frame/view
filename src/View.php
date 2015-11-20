@@ -6,38 +6,33 @@
  */
 class View
 {
-	protected $views;
+	protected $nested;
 
 	/**
 	 *
 	 */
 	public function __construct()
 	{
-		$this->views = [];
+		$this->nested = [];
 	}
 
 	/**
 	 * @param $nestView
-	 * @param $nestSection
 	 * @param $nestedView
 	 * @param array $nestedDatas
 	 */
-	public function add($nestView, $nestSection, $nestedView, $nestedDatas = [])
+	public function nest($nestView, $nestedView, $nestedDatas = [])
 	{
-		$this->views[$nestView][] = [
-			'section' => $nestSection,
-			'view' => $nestedView,
-			'datas' => $nestedDatas
-		];
+		$this->nested[$nestView][$nestedView] = $nestedDatas;
 	}
 
 	/**
 	 * @return array
 	 */
-	public function get($nestView)
+	public function getNested($nestView)
 	{
-		if(isset($this->views[$nestView]))
-			return $this->views[$nestView];
+		if(isset($this->nested[$nestView]))
+			return $this->nested[$nestView];
 		else
 			return [];
 	}

@@ -39,8 +39,8 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('*', function (\Illuminate\View\View $view) {
-            foreach(\WhiteFrame\View::get($view->getName()) as $viewInfos) {
-                $view->nest($viewInfos['section'], $viewInfos['view'], $viewInfos['datas']);
+            foreach(\WhiteFrame\View::getNested($view->getName()) as $name => $datas) {
+                $view->nest('nested.' . $name, $name, $datas);
             }
         });
     }
