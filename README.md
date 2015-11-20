@@ -50,7 +50,7 @@ And then nest this partial view into the layout section using `WhiteFrame\View` 
 ```php
 public function boot()
 {
-  \WhiteFrame\View::nest('layout', my_module::layout.menu');
+  \WhiteFrame\View::nest('layout', 'my_module::layout.menu');
   /*
    * You can use 3 params : nesting view, nested view, array containing datas for nested view (optionnal)
    */
