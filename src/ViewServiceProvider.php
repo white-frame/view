@@ -31,7 +31,9 @@ class ViewServiceProvider extends ServiceProvider
             });
         }
         elseif(Environment::isLumen()) {
-            class_alias('WhiteFrame\View\ViewFacade', 'WhiteFrame\View');
+            if(!class_exists('WhiteFrame\View')) {
+                class_alias('WhiteFrame\View\ViewFacade', 'WhiteFrame\View');
+            }
         }
     }
 
