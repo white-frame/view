@@ -1,6 +1,7 @@
 <?php namespace WhiteFrame\View;
 
 use Illuminate\Support\ServiceProvider;
+use WhiteFrame\Support\Application;
 use WhiteFrame\Support\Environment;
 
 /**
@@ -25,16 +26,7 @@ class ViewServiceProvider extends ServiceProvider
             return new \WhiteFrame\View\View();
         });
 
-        if(Environment::isLaravel()) {
-            $this->app->booting(function () {
-                app('Illuminate\Foundation\AliasLoader')->alias('WhiteFrame\View', 'WhiteFrame\View\ViewFacade');
-            });
-        }
-        elseif(Environment::isLumen()) {
-            if(!class_exists('WhiteFrame\View')) {
-                class_alias('WhiteFrame\View\ViewFacade', 'WhiteFrame\View');
-            }
-        }
+        Application::alias('WhiteFrame\View', 'WhiteFrame\View\ViewFacade');
     }
 
     /**
