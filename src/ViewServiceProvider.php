@@ -3,6 +3,7 @@
 use Illuminate\Support\ServiceProvider;
 use WhiteFrame\Support\Application;
 use WhiteFrame\Support\Environment;
+use WhiteFrame\Support\Framework;
 
 /**
  * Class ViewServiceProvider
@@ -22,6 +23,8 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        Framework::registerPackage('view');
+
         $this->app->singleton('white-frame.view.view', function ($app) {
             return new \WhiteFrame\View\View();
         });
